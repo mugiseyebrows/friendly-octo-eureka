@@ -1,0 +1,8 @@
+def main
+    github_checkout()
+    use(conda)
+    pip install fonttools
+    python list-fonts.py fonts.txt
+    github_upload(fonts.txt)
+
+github-workflow 1
