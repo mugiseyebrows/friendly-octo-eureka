@@ -1,3 +1,4 @@
+import sys
 import os
 from fontTools import ttLib
 import argparse
@@ -8,7 +9,12 @@ args = parser.parse_args()
 
 fontFamilies = set()
 
-for root, dirs, files in os.walk("C:\\windows\\fonts"):
+if sys.platform == 'win32':
+    fontPath = "C:\\windows\\fonts"
+elif sys.platform == 'linux':
+    fontPath = "/usr/share/fonts"
+
+for root, dirs, files in os.walk(fontPath):
     for f in files:
         if os.path.splitext(f)[1].lower() not in ['.otf','.ttf']:
             continue
